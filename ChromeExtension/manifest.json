@@ -3,7 +3,8 @@
     "name": "Site Safety Analyzer",
     "version": "1.0",
     "permissions": ["activeTab", "storage", "scripting"],
-    "host_permissions": ["*://*/*", "https://api.cohere.ai/*"],
+    "host_permissions": ["*://*/*", "http://localhost:5000/*"],
+    
     "background": {
       "service_worker": "background.js",
       "type": "module"
