@@ -18,6 +18,7 @@ def extract_text(url):
     return "\n".join(texts)  # Combine into a readable format
 
 
+
 def policy_check(url):
     lst = []
     text = extract_text(url)
@@ -87,6 +88,8 @@ if __name__ == "__main__":
     url = "https://www.harriscomputer.com/privacy-policy"
     response = policy_check(url)
     print(response[0])
+    lines = response[0].splitlines()
+    print(lines)
     print("")
     if len(response) == 2:
         print(response[1])
