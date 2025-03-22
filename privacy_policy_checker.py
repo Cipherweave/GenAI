@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-client = OpenAI(api_key="") 
+client = OpenAI(api_key="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") 
 ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
 
 def extract_text(url):
@@ -81,12 +81,14 @@ def policy_check(url):
     return lst
 
 
-# # Example usage
-# url = "https://www.reddit.com/policies/privacy-policy"
-# response = ask_assistant(url)
-# print(response[0])
-# print("")
-# if len(response) == 2:
-#     print(response[1])
+
+if __name__ == "__main__":
+    # Example usage
+    url = "https://www.harriscomputer.com/privacy-policy"
+    response = policy_check(url)
+    print(response[0])
+    print("")
+    if len(response) == 2:
+        print(response[1])
 
 
