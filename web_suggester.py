@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from duckduckgo_search import DDGS
 
 load_dotenv()
-co = cohere.Client("V36HHgtBhXgpa3C8tu9s8blJe4l1vKG6gtWP3MRO")
+co = cohere.Client("")
 
 
 def get_related_websites(company_name: str) -> list:
