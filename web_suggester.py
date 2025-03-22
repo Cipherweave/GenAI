@@ -2,8 +2,6 @@ import cohere
 import json
 import os
 from dotenv import load_dotenv
-from duckduckgo_search import DDGS
-import os
 from dotenv import load_dotenv
 from duckduckgo_search import DDGS
 
@@ -13,12 +11,6 @@ co = cohere.Client("")
 
 def get_related_websites(company_name: str) -> list:
 
-    prompt = (f"Provide a list of exactly three websites or apps that are similar to {company_name}."  
-            f' Rules: '
-              f'- Only return the names of the websites or apps. '
-              f'- No explanations, descriptions, or extra words.  '
-              f'- The response must contain exactly three names.'
-              f'- Do not include unrelated websites.  ')
     prompt = (f"Provide a list of exactly three websites or apps that are similar to {company_name}."  
             f' Rules: '
               f'- Only return the names of the websites or apps. '
@@ -59,6 +51,7 @@ def get_official_urls(company_names):
                 urls[company] = search_results[0]["href"]
 
     return urls
+
 
 def search_related_websites(company_name):
     related_websites = get_related_websites(company_name)

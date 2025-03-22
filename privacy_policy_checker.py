@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-client = OpenAI(api_key="") 
+client = OpenAI(api_key="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")
 ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
 
 def extract_text(url):
