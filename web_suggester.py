@@ -3,11 +3,9 @@ import json
 import os
 from dotenv import load_dotenv
 from duckduckgo_search import DDGS
-from dotenv import load_dotenv
-from duckduckgo_search import DDGS
 
 load_dotenv()
-co = cohere.Client()
+co = cohere.Client('')
 
 
 def get_related_websites(company_name: str) -> list:
@@ -52,6 +50,7 @@ def get_official_urls(company_names):
                 urls[company] = search_results[0]["href"]
 
     return urls
+
 
 def search_related_websites(company_name):
     related_websites = get_related_websites(company_name)
