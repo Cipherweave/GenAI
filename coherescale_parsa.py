@@ -1,7 +1,7 @@
 from privacy_policy_checker import policy_check
 import cohere
 
-co = cohere.Client("Q5xK1olF7Xn2PtnJgTneDarwhHPdoxjOOdOWIMjP")
+co = cohere.Client("")
 
 
 def set_scale(lst):
