@@ -58,5 +58,5 @@ def main(company_name):
 
 
 if __name__ == '__main__':
-    print(main('myflixer'))
+    print(main('pinterest'))
 
