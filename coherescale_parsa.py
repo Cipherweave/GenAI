@@ -1,7 +1,10 @@
 from privacy_policy_checker import policy_check
 import cohere
+from dotenv import load_dotenv
+import os
 
-co = cohere.Client("")
+load_dotenv()
+co = cohere.Client(os.getenv("COHERE_API_KEY"))
 
 
 def set_scale(lst):

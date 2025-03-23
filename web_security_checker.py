@@ -1,9 +1,12 @@
 from bs4 import BeautifulSoup
 import requests
 from openai import OpenAI
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
-client = OpenAI(api_key="") 
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 ASSISTANT_ID = "asst_vZcbERUnnB1DGgz7ase0EZig"
 
 
@@ -48,7 +51,6 @@ def security_check(url: str):
     text = extract_important_html(url)
     thread = client.beta.threads.create()
 
-    print(text)
 
     # Send the URL as a message to the assistant
     client.beta.threads.messages.create(
@@ -70,7 +72,6 @@ def security_check(url: str):
             run_id=run.id
         )
     
-    print("here")
 
     # Retrieve the assistant's response
     messages = client.beta.threads.messages.list(thread_id=thread.id)
@@ -113,11 +114,10 @@ def security_check(url: str):
 if __name__ == "__main__":
     # s = extract_important_html("https://www.harriscomputer.com/")
     # print(s)
-    lst = security_check("https://www.harriscomputer.com/")
+    lst = security_check("http://henryyuen.net/")
     print(lst[0])
     lines = lst[0].splitlines()
     print(lines)
-    print("")
     if len(lst) == 2:
         print(lst[1])
     
