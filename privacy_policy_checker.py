@@ -51,6 +51,9 @@ def policy_check(url):
     messages = client.beta.threads.messages.list(thread_id=thread.id)
     assistant_response = messages.data[0].content[0].text.value
 
+    print("here")
+    print(assistant_response)
+
     lst.append(assistant_response)
 
     if assistant_response == "Policy Safe!":
