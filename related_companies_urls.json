@@ -1,6 +1,8 @@
 {
-    "company": "Harris Computers",
+    "company": "google",
     "related_companies": {
-        "BestBuy, Walmart, Dell": "https://www.bestbuy.com/"
+        "Bing": "https://www.bing.com/hp?mkt=us-eN",
+        "Yahoo": "https://ca.yahoo.com/",
+        "DuckDuckGo": "https://duckduckgo.com/"
     }
 }

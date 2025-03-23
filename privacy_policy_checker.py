@@ -4,8 +4,10 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-client = OpenAI(api_key="")
-ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+ASSISTANT_ID = "asst_vZcbERUnnB1DGgz7ase0EZig"
 
 def extract_text(url):
     
@@ -66,6 +68,9 @@ def policy_check(url):
     # Retrieve the assistant's response
     messages = client.beta.threads.messages.list(thread_id=thread.id)
     assistant_response = messages.data[0].content[0].text.value
+
+    print("here")
+    print(assistant_response)
 
     lst.append(assistant_response)
 

@@ -4,8 +4,9 @@ from openai import OpenAI
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+load_dotenv()
 
-client = OpenAI(api_key="") 
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 ASSISTANT_ID = "asst_vZcbERUnnB1DGgz7ase0EZig"
 
 

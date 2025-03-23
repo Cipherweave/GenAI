@@ -1,7 +1,12 @@
 from privacy_policy_checker import policy_check
 import cohere
+from dotenv import load_dotenv
+import os
+import json
 
-co = cohere.Client("")
+
+load_dotenv()
+co = cohere.Client(os.getenv("COHERE_API_KEY"))
 
 
 def set_scale(lst):
@@ -44,11 +49,11 @@ def main(lst):
 
     output = policy_check(lst)
     rate = set_scale(output)
+    result = {"trust_score": rate}
 
-    return {"trust_score": rate}
-
+    return json.dumps(result, indent=4)
 
 if __name__ == '__main__':
 
-    url = "https://privacycenter.instagram.com/policy"
+    url = "https://www.tiktok.com/legal/page/us/privacy-policy/en"
     print(main(url))
