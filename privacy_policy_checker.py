@@ -1,6 +1,7 @@
 from openai import OpenAI
 from bs4 import BeautifulSoup
 import requests
+<<<<<<< HEAD
 from dotenv import load_dotenv
 import os
 
@@ -9,6 +10,15 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
+=======
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+ASSISTANT_ID = "asst_vZcbERUnnB1DGgz7ase0EZig"
+>>>>>>> c432317 (Final)
 
 def extract_text(url):
     

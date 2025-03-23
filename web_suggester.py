@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from duckduckgo_search import DDGS
 
 load_dotenv()
-co = cohere.Client('')
+co = cohere.Client(os.getenv("COHERE_API_KEY"))
 
 
 def get_related_websites(company_name: str) -> list:
@@ -21,20 +21,20 @@ def get_related_websites(company_name: str) -> list:
         model="command",
         prompt = prompt,
         max_tokens=50,
-        temperature=0.7
+        temperature=0.5
         )
 
-    suggestions = response.generations[0].text.strip().split("\n")
+    suggestions = response.generations[0].text.strip()
 
-    lst = []
-    for s in suggestions:
-        if s:
-            lst.append(s)
+    if "," in suggestions:
+        lst = [s.strip() for s in suggestions.split(",")]
+    else:
+        lst = [s.strip() for s in suggestions.split("\n")]
 
-        if len(lst) == 3:
-            break
+    if len(lst) < 3:
+        lst.extend([""] * (3 - len(lst)))
 
-    return lst
+    return lst[:3]
 
 
 def get_official_urls(company_names):
@@ -42,8 +42,7 @@ def get_official_urls(company_names):
 
     with DDGS() as ddgs:
         for company in company_names:
-            query = (f"{company} official website, no account or log in page just"
-                     f"the official website")
+            query = (f"{company} official site")
             search_results = ddgs.text(query, max_results=1)
 
             if search_results:
@@ -53,6 +52,7 @@ def get_official_urls(company_names):
 
 
 def search_related_websites(company_name):
+
     related_websites = get_related_websites(company_name)
 
     official_urls = get_official_urls(related_websites)
@@ -66,5 +66,5 @@ def search_related_websites(company_name):
 
 
 if __name__ == '__main__':
-    print(search_related_websites('pinterest'))
+    print(search_related_websites('google'))
 

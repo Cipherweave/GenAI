@@ -1,6 +1,14 @@
 {
+<<<<<<< HEAD
     "company": "Harris Computers",
     "related_companies": {
         "BestBuy, Walmart, Dell": "https://www.bestbuy.com/"
+=======
+    "company": "google",
+    "related_companies": {
+        "Bing": "https://www.bing.com/hp?mkt=us-eN",
+        "Yahoo": "https://ca.yahoo.com/",
+        "DuckDuckGo": "https://duckduckgo.com/"
+>>>>>>> c432317 (Final)
     }
 }
