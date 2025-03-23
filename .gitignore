@@ -1,2 +1,6 @@
 .env
+<<<<<<< HEAD
 __pycache__
+=======
+.venv
+>>>>>>> 4150957 (policy-finder.py)
