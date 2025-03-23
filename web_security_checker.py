@@ -1,18 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 from openai import OpenAI
-<<<<<<< HEAD
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-<<<<<<< HEAD
-=======
 from dotenv import load_dotenv
 import os
->>>>>>> c432317 (Final)
-=======
-from dotenv import load_dotenv
-import os
->>>>>>> 955d285 (Back-end version 2)
 
 load_dotenv()
 
@@ -88,10 +80,7 @@ def security_check(url: str):
     text = extract_important_html(url)
     thread = client.beta.threads.create()
 
-<<<<<<< HEAD
     text = text[0: 60000]
-=======
->>>>>>> c432317 (Final)
 
    
     
@@ -114,12 +103,8 @@ def security_check(url: str):
             thread_id=thread.id,
             run_id=run.id
         )
-<<<<<<< HEAD
 
 
-=======
-    
->>>>>>> c432317 (Final)
 
     # Retrieve the assistant's response
     messages = client.beta.threads.messages.list(thread_id=thread.id)
@@ -192,17 +177,8 @@ def security_check(url: str):
 if __name__ == "__main__":
     # s = extract_important_html("https://www.harriscomputer.com/")
     # print(s)
-<<<<<<< HEAD
     lst = security_check("https://privacycenter.instagram.com/policy")
     print(lst[0])
     print(lst[1])
     print(lst[2])
-=======
-    lst = security_check("http://henryyuen.net/")
-    print(lst[0])
-    lines = lst[0].splitlines()
-    print(lines)
-    if len(lst) == 2:
-        print(lst[1])
->>>>>>> c432317 (Final)
     
