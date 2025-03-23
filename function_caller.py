@@ -10,6 +10,7 @@ from privacy_policy_score import set_scale
 def get_sentiment(web_name, url) -> list:
     lst = []
     policy_url = get_privacy_policy_url(url)
+    print(policy_url)
     sentiment_lst = policy_check(policy_url)
     if len(sentiment_lst) == 2:
         search_related_websites(web_name)
@@ -23,7 +24,7 @@ def get_sentiment(web_name, url) -> list:
 
 
 if __name__ == "__main__":
-    lst = get_sentiment("Harris Computers", "https://www.harriscomputer.com/")
+    lst = get_sentiment("Harris Computers", "https://www.ali-rahbar.com/")
     print(lst)
 
 

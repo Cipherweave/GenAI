@@ -32,7 +32,7 @@ def get_related_websites(company_name: str) -> list:
         lst = [s.strip() for s in suggestions.split("\n")]
 
     if len(lst) < 3:
-        lst.extend([""] * (3 - len(lst)))
+        lst.extend(["Unknown"] * (3 - len(lst)))
 
     return lst[:3]
 
@@ -47,6 +47,9 @@ def get_official_urls(company_names):
 
             if search_results:
                 urls[company] = search_results[0]["href"]
+
+            else:
+                urls[company] = "URL not found"
 
     return urls
 

@@ -54,5 +54,5 @@ def main(lst):
 
 if __name__ == '__main__':
 
-    url = "https://www.tiktok.com/legal/page/us/privacy-policy/en"
+    url = "https://www.ali-rahbar.com"
     print(main(url))
