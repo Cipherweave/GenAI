@@ -1,35 +1,15 @@
 from openai import OpenAI
 from bs4 import BeautifulSoup
 import requests
-<<<<<<< HEAD
-<<<<<<< HEAD
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
-=======
-import os
-from dotenv import load_dotenv
-=======
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 import os
->>>>>>> 955d285 (Back-end version 2)
 
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-<<<<<<< HEAD
-ASSISTANT_ID = "asst_vZcbERUnnB1DGgz7ase0EZig"
->>>>>>> c432317 (Final)
-=======
 ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
->>>>>>> 955d285 (Back-end version 2)
 
 def extract_text(url):
     
@@ -39,9 +19,28 @@ def extract_text(url):
     # Extract headings and paragraphs
     texts = []
     for tag in soup.find_all(["h1", "h2", "h3", "p"]):
-        texts.append(tag.get_text(strip=True))  
+        texts.append(tag.get_text(strip=True))  # Remove extra spaces
 
-    return "\n".join(texts)  
+    if not texts:
+        options = Options()
+        options.add_argument("--headless")  # Enable headless mode
+        options.add_argument("--disable-gpu")  # Sometimes necessary for headless mode
+        options.add_argument("--no-sandbox")  # Helps in some environments
+        options.add_argument("--window-size=1920,1080")  # Set screen size if needed
+
+        driver = webdriver.Chrome(options=options)
+        driver.get(url)
+        driver.implicitly_wait(5)
+
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        driver.quit()
+
+        texts = [tag.get_text(strip=True) for tag in soup.find_all(["h1", "h2", "h3", "p"])]
+
+
+    return "\n".join(texts)  # Combine into a readable format
+
+
 
 def policy_check(url):
     lst = []
@@ -108,6 +107,7 @@ def policy_check(url):
     return lst
 
 
+
 if __name__ == "__main__":
     # Example usage
     url = "https://privacycenter.instagram.com/policy"
@@ -118,5 +118,4 @@ if __name__ == "__main__":
     print("")
     if len(response) == 2:
         print(response[1])
-
 
