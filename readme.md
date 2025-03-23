@@ -121,7 +121,7 @@ With real-time pop-up notifications, our extension keeps you informed whenever y
 
 
 
-🙌 Acknowledgments
+** 🙌 Acknowledgments **
 We would like to express our sincere gratitude to everyone who contributed to the development of VortexWatch. This project wouldn't have been possible without the support and guidance we received throughout the Genesis GenAI Hackathon.
 
 We also want to extend our appreciation to the organizers of the Genesis GenAI Hackathon for creating an inspiring and supportive environment. Your dedication to fostering innovation and collaboration made this experience truly remarkable.
