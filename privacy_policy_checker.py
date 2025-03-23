@@ -1,9 +1,13 @@
 from openai import OpenAI
 from bs4 import BeautifulSoup
 import requests
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
 
 def extract_text(url):
@@ -13,11 +17,9 @@ def extract_text(url):
     # Extract headings and paragraphs
     texts = []
     for tag in soup.find_all(["h1", "h2", "h3", "p"]):
-        texts.append(tag.get_text(strip=True))  # Remove extra spaces
+        texts.append(tag.get_text(strip=True))  
 
-    return "\n".join(texts)  # Combine into a readable format
-
-
+    return "\n".join(texts)  
 
 def policy_check(url):
     lst = []
@@ -80,7 +82,6 @@ def policy_check(url):
     lst.append(assistant_response)
 
     return lst
-
 
 
 if __name__ == "__main__":
