@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const alternativesList = document.querySelector('.alternatives-list');
 
         try {
-            const response = await fetch('http://localhost:5000/analyze', {
+            const response = await fetch('https://ssa-backend-454605.uk.r.appspot.com/analyze', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -3,7 +3,7 @@
     "name": "Site Safety Analyzer",
     "version": "1.0",
     "permissions": ["activeTab", "storage", "scripting"],
-    "host_permissions": ["*://*/*", "http://localhost:5000/*"],
+    "host_permissions": ["*://*/*", "https://ssa-backend-454605.uk.r.appspot.com/"],
     
     "background": {
       "service_worker": "background.js",
@@ -16,7 +16,7 @@
     }],
     "action": {
       "default_popup": "popup.html",
-      "default_icon": "icons/lock-open-solid.svg"
+      "default_icon": "icons/lock-open-solid.png"
     }
   }
   

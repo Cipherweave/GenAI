@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === 'UPDATE_ICON') {
       // Change icon based on site safety using only 48px icons
       chrome.action.setIcon({
-        path: message.isSafe ? "icons/lock-solid.svg" : "icons/lock-open-solid.svg"
+        path: message.isSafe ? "icons/lock-solid.png" : "icons/lock-open-solid.png"
       });
       
       // Optionally set badge
