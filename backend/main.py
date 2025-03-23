@@ -136,17 +136,27 @@ def extract_text(url):
         # Extract headings and paragraphs
         texts = []
         for tag in soup.find_all(["h1", "h2", "h3", "p"]):
-            texts.append(tag.get_text(strip=True))  # Remove extra spaces
+            text = tag.get_text(strip=True)
+            if text:  # Only add non-empty text
+                texts.append(text)
 
+        if not texts:
+            return "No readable text found in the privacy policy."
+            
         return "\n".join(texts)  # Combine into a readable format
     except Exception as e:
         print(f"Error extracting text: {e}")
         return "Error extracting text from the policy page."
 
+
 def policy_check(url):
     try:
         lst = []
         text = extract_text(url)
+        
+        # Check if text is empty or too short
+        if not text or text == "Error extracting text from the policy page." or len(text) < 10:
+            return ["Privacy Concerns Detected", "Could not extract meaningful text from the privacy policy."]
         
         # Limit text length to avoid token limits
         if len(text) > 8000:

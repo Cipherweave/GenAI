@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentURL = new URL(tabs[0].url);
         const currentDomain = currentURL.hostname;
 
+        const loadingEl = document.getElementById('loading');
         const resultEl = document.getElementById('result');
         const alternativesEl = document.getElementById('alternatives');
-
-        resultEl.textContent = "Analyzing website safety...";
+        const alternativesList = document.querySelector('.alternatives-list');
 
         try {
             const response = await fetch('http://localhost:5000/analyze', {
@@ -21,20 +21,24 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             const data = await response.json();
+            
+            // Hide loading spinner
+            loadingEl.style.display = 'none';
 
             if (data.status === 'success') {
                 if (data.is_safe) {
                     resultEl.innerHTML = `
                         <div class="safe">
-                            <h2>✅ Website is Safe</h2>
+                            <h2><i class="fas fa-check-circle" style="color: var(--success-color)"></i> Website is Safe</h2>
                             <p>Privacy policy analysis indicates this site is safe to use.</p>
-                            <p><a href="${data.privacy_url}" target="_blank">View Privacy Policy</a></p>
+                            <p><a href="${data.privacy_url}" target="_blank">View Privacy Policy <i class="fas fa-external-link-alt"></i></a></p>
                         </div>
                     `;
+                    alternativesEl.style.display = 'none';
                 } else {
                     resultEl.innerHTML = `
                         <div class="unsafe">
-                            <h2>⚠️ Privacy Concerns Detected</h2>
+                            <h2><i class="fas fa-exclamation-triangle" style="color: var(--warning-color)"></i> Privacy Concerns Detected</h2>
                             <p>${data.policy_analysis[0]}</p>
                             <details>
                                 <summary>See Details</summary>
@@ -43,13 +47,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     `;
 
-                    if (data.alternatives) {
-                        alternativesEl.innerHTML = '<h3>Alternative Sites:</h3>';
+                    if (data.alternatives && Object.keys(data.alternatives).length > 0) {
+                        alternativesList.innerHTML = '';
+                        
                         for (const [name, url] of Object.entries(data.alternatives)) {
-                            const div = document.createElement('div');
-                            div.innerHTML = `<a href="${url}" target="_blank">${name}</a>`;
-                            alternativesEl.appendChild(div);
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.target = '_blank';
+                            link.textContent = name;
+                            alternativesList.appendChild(link);
                         }
+                        
+                        alternativesEl.style.display = 'block';
+                    } else {
+                        alternativesEl.style.display = 'none';
                     }
                 }
 
@@ -62,10 +73,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
             } else {
-                resultEl.textContent = `Error: ${data.message}`;
+                resultEl.innerHTML = `
+                    <div class="unsafe">
+                        <h2><i class="fas fa-times-circle" style="color: var(--warning-color)"></i> Error</h2>
+                        <p>${data.message}</p>
+                    </div>
+                `;
+                alternativesEl.style.display = 'none';
             }
         } catch (error) {
-            resultEl.textContent = `Error: ${error.message}`;
+            loadingEl.style.display = 'none';
+            resultEl.innerHTML = `
+                <div class="unsafe">
+                    <h2><i class="fas fa-times-circle" style="color: var(--warning-color)"></i> Error</h2>
+                    <p>${error.message}</p>
+                </div>
+            `;
+            alternativesEl.style.display = 'none';
         }
     });
 });

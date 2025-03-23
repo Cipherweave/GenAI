@@ -2,13 +2,37 @@
 <html>
 <head>
   <title>Site Safety Analyzer</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>Site Safety Analyzer</h1>
-  <div id="loading">Analyzing website safety...</div>
-  <div id="result"></div>
-  <div id="alternatives"></div>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <i class="fas fa-shield-alt"></i>
+        <h1>Site Safety Analyzer</h1>
+      </div>
+    </header>
+    
+    <main>
+      <div id="loading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Analyzing website safety...</p>
+      </div>
+      
+      <div id="result" class="result-card"></div>
+      
+      <div id="alternatives" class="alternatives-container">
+        <h3 class="alternatives-title">Safer Alternatives</h3>
+        <div class="alternatives-list"></div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>Powered by AI Safety Analysis</p>
+    </footer>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>
