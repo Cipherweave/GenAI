@@ -1,22 +1,16 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "company": "Harris Computers",
     "related_companies": {
         "BestBuy, Walmart, Dell": "https://www.bestbuy.com/"
-=======
     "company": "google",
     "related_companies": {
         "Bing": "https://www.bing.com/hp?mkt=us-eN",
         "Yahoo": "https://ca.yahoo.com/",
         "DuckDuckGo": "https://duckduckgo.com/"
->>>>>>> c432317 (Final)
-=======
     "company": "Harris Computers",
     "related_companies": {
         "BestBuy": "https://www.bestbuy.ca/en-ca",
         "Walmart": "https://www.walmart.ca/en",
         "Amazon. \n\nThese are all large companies that": "https://brandsownedby.com/list-of-amazon-owned-companies/"
->>>>>>> 955d285 (Back-end version 2)
     }
 }
