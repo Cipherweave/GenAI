@@ -4,9 +4,6 @@ from web_suggester import search_related_websites
 from web_security_checker import security_check
 from privacy_policy_score import set_scale
 
-
-
-
 def get_sentiment(web_name, url) -> list:
     lst = []
     policy_url = get_privacy_policy_url(url)
@@ -20,10 +17,6 @@ def get_sentiment(web_name, url) -> list:
     
     return lst
 
-
-
 if __name__ == "__main__":
     lst = get_sentiment("Harris Computers", "https://www.harriscomputer.com/")
     print(lst)
-
-
