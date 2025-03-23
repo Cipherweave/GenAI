@@ -4,10 +4,15 @@ from openai import OpenAI
 <<<<<<< HEAD
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+<<<<<<< HEAD
 =======
 from dotenv import load_dotenv
 import os
 >>>>>>> c432317 (Final)
+=======
+from dotenv import load_dotenv
+import os
+>>>>>>> 955d285 (Back-end version 2)
 
 load_dotenv()
 

@@ -2,6 +2,7 @@ from openai import OpenAI
 from bs4 import BeautifulSoup
 import requests
 <<<<<<< HEAD
+<<<<<<< HEAD
 from dotenv import load_dotenv
 import os
 
@@ -13,12 +14,22 @@ ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
 =======
 import os
 from dotenv import load_dotenv
+=======
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from dotenv import load_dotenv
+import os
+>>>>>>> 955d285 (Back-end version 2)
 
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+<<<<<<< HEAD
 ASSISTANT_ID = "asst_vZcbERUnnB1DGgz7ase0EZig"
 >>>>>>> c432317 (Final)
+=======
+ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
+>>>>>>> 955d285 (Back-end version 2)
 
 def extract_text(url):
     
@@ -61,8 +72,6 @@ def policy_check(url):
     messages = client.beta.threads.messages.list(thread_id=thread.id)
     assistant_response = messages.data[0].content[0].text.value
 
-    print("here")
-    print(assistant_response)
 
     lst.append(assistant_response)
 
