@@ -1,12 +1,14 @@
 from openai import OpenAI
 from bs4 import BeautifulSoup
 import requests
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="")
 ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
 
 def extract_text(url):
+    
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 
@@ -14,6 +16,23 @@ def extract_text(url):
     texts = []
     for tag in soup.find_all(["h1", "h2", "h3", "p"]):
         texts.append(tag.get_text(strip=True))  # Remove extra spaces
+
+    if not texts:
+        options = Options()
+        options.add_argument("--headless")  # Enable headless mode
+        options.add_argument("--disable-gpu")  # Sometimes necessary for headless mode
+        options.add_argument("--no-sandbox")  # Helps in some environments
+        options.add_argument("--window-size=1920,1080")  # Set screen size if needed
+
+        driver = webdriver.Chrome(options=options)
+        driver.get(url)
+        driver.implicitly_wait(5)
+
+        soup = BeautifulSoup(driver.page_source, "html.parser")
+        driver.quit()
+
+        texts = [tag.get_text(strip=True) for tag in soup.find_all(["h1", "h2", "h3", "p"])]
+
 
     return "\n".join(texts)  # Combine into a readable format
 
@@ -85,7 +104,7 @@ def policy_check(url):
 
 if __name__ == "__main__":
     # Example usage
-    url = "https://www.harriscomputer.com/privacy-policy"
+    url = "https://privacycenter.instagram.com/policy"
     response = policy_check(url)
     print(response[0])
     lines = response[0].splitlines()

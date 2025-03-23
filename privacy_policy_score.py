@@ -37,7 +37,7 @@ def set_scale(lst):
     except ValueError:
         pass
 
-    return "Score not available"
+    return -1
 
 
 def main(lst):
