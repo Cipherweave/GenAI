@@ -1,8 +1,25 @@
 {
     "company": "pinterest",
     "related_companies": {
+<<<<<<< HEAD
         "weheartit": "https://www.weheartit.com",
         "fotophound": "https://www.fotophound.com",
         "jolty": "https://www.jolty.com"
+=======
+        "BestBuy, Walmart, Dell": "https://www.bestbuy.com/"
+    "company": "google",
+    "related_companies": {
+        "Bing": "https://www.bing.com/hp?mkt=us-eN",
+        "Yahoo": "https://ca.yahoo.com/",
+        "DuckDuckGo": "https://duckduckgo.com/"
+    "company": "Harris Computers",
+    "related_companies": {
+        "BestBuy": "https://www.bestbuy.ca/en-ca",
+        "Walmart": "https://www.walmart.ca/en",
+        "Amazon. \n\nThese are all large companies that": "https://brandsownedby.com/list-of-amazon-owned-companies/"
+        "BestBuy": "https://www.bestbuy.ca/en-ca",
+        "Walmart": "https://www.walmart.ca/en",
+        "Apple Store": "https://www.apple.com/ca/"
+>>>>>>> b9ce4c7a2849d65655a8d9ae0c9b0ea23f1058dd
     }
 }

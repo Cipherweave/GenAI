@@ -75,6 +75,7 @@ def policy_check(url):
     lst.append(assistant_response)
 
     if assistant_response == "Policy Safe!":
+        lst.append("")
         return lst
    
     # Send the URL as a message to the assistant
@@ -117,5 +118,4 @@ if __name__ == "__main__":
     print("")
     if len(response) == 2:
         print(response[1])
-
 
