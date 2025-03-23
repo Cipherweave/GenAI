@@ -3,6 +3,8 @@ import requests
 from openai import OpenAI
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from dotenv import load_dotenv
+import os
 
 load_dotenv()
 

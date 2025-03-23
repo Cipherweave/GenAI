@@ -10,7 +10,7 @@ co = cohere.Client(os.getenv("COHERE_API_KEY"))
 
 
 def set_scale(lst):
-    print(lst[0])
+    
     prompt = (f"The following list contains problems in a website's privacy policy: {lst[0]}. "
           f"Based on these issues, assign a trust score from 1 to 10. "
           f"A higher number means the website is more trustworthy, while a lower number "
@@ -34,7 +34,6 @@ def set_scale(lst):
     ai_response = response.generations[0].text.strip()
 
     try:
-        print(ai_response)
         score = int(ai_response)
         if 1 <= score <= 10:
             return score
