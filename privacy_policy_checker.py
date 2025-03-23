@@ -11,6 +11,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 ASSISTANT_ID = "asst_v2se6YGN5d3xm4voj2k8eMOb"
 
 def extract_text(url):
+    
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 
@@ -86,7 +87,7 @@ def policy_check(url):
 
 if __name__ == "__main__":
     # Example usage
-    url = "https://www.harriscomputer.com/privacy-policy"
+    url = "https://privacycenter.instagram.com/policy"
     response = policy_check(url)
     print(response[0])
     lines = response[0].splitlines()

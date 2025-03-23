@@ -1,8 +1,6 @@
 {
-    "company": "instagram",
+    "company": "Harris Computers",
     "related_companies": {
-        "Here are three platforms similar to Instagram:": "https://lifehacker.com/tech/the-best-instagram-alternatives-if-you-are-sick-of-meta",
-        "1. TikTok": "https://www.tiktok.com/",
-        "2. Snapchat": "https://accounts.snapchat.com/accounts/v2/login"
+        "BestBuy, Walmart, Dell": "https://www.bestbuy.com/"
     }
 }
