@@ -17,10 +17,6 @@ def get_sentiment(web_name, url) -> list:
     
     return lst
 
-
-
 if __name__ == "__main__":
     lst = get_sentiment("Harris Computers", "https://www.harriscomputer.com/")
     print(lst)
-
-
